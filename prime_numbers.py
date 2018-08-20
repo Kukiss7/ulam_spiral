@@ -19,6 +19,10 @@ class Number:
 		return res
 
 
+	def __eq__(self, other):
+		return self.value == other.value and self.is_prime == other.is_prime
+
+
 class PrimesSet:
 	""" Represents set of prime numbers
 		end: int - max value
@@ -35,11 +39,16 @@ class PrimesSet:
 
 
 	def check_for_negative_end(self):
+		""" Checks self.end class input and resets it to 0 if given negative
+		"""
 		if self.end < 0:
 			self.end = 0
 
 
 	def build_primes_set(self):
+		""" Builds set with prime int numbers
+			from 2 to self.end including self.end
+		"""
 		primes = set()
 		for number in range(2, self.end+1):
 			for prime in primes:
@@ -64,8 +73,14 @@ class NumbersGen:
 		self.gen = self.numbers_gen()
 
 
+	def __iter__(self):
+		return self.gen
+
+
 	def numbers_gen(self):
-		for value in range(self.start, self.end):
+		""" Makes generator of Number objects
+		"""
+		for value in range(self.start, self.end+1):
 			is_prime = value in self.primes
 			number = Number(value, is_prime)
 			yield number
@@ -73,9 +88,6 @@ class NumbersGen:
 
 
 if __name__ == '__main__':
-	num_set = PrimesSet(23)
-	print(num_set.primes_set)
-	numbers = NumbersGen(25)
-	for n in numbers.gen:
-		print(n)
-
+	numbers = NumbersGen(15000, start=14960)
+	for number in numbers:
+		print(number)
