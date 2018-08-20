@@ -1,38 +1,42 @@
-from prime_numbers import is_prime
+from prime_numbers import Number, PrimesSet, NumbersGen
 import unittest
 
-class TestIsPrime(unittest.TestCase):
-	def test_values_under_0(self):
-		numbers_under_0 = [-991, -11, -5, -1]
-		for number in numbers_under_0:
-			self.assertFalse(is_prime(number))
+class TestPrimesSet(unittest.TestCase):
+	def test_inputs_negative_int(self):
+		test_prime_set = PrimesSet(-100)
+		self.assertFalse(test_prime_set.primes_set)
+
+		test_prime_set2 = PrimesSet(-7)
+		self.assertFalse(test_prime_set2.primes_set)
 
 
-	def test_values_0_and_1(self):
-		self.assertFalse(is_prime(0))
-		self.assertFalse(is_prime(1))
+	def test_inputs_0_and_1(self):
+		test_prime_set = PrimesSet(0)
+		self.assertFalse(test_prime_set.primes_set)
+
+		test_prime_set2 = PrimesSet(1)
+		self.assertFalse(test_prime_set2.primes_set)
 
 
-	def test_values_primes_under_20(self):
-		primes_under_20 = [2,3,5,7,11,13,17,19]
-		for number in primes_under_20:
-			self.assertTrue(number)
+	def test_input_23(self):
+		test_primes_set = PrimesSet(23)
+		self.assertEqual(test_primes_set.primes_set, {2,3,5,7,11,13,17,19,23})
 
 
-	def test_values_composite_numbers_under_11(self):
-		composite_numbers_under_11 = [4,6,8,10]
-		for number in composite_numbers_under_11:
-			self.assertTrue(number)
+	def test_contain_method_true(self):
+		test_prime_set = PrimesSet(100)
+		self.assertTrue(3 in test_prime_set)
+		self.assertTrue(11 in test_prime_set)
+		self.assertTrue(23 in test_prime_set)
+		self.assertTrue(89 in test_prime_set)
 
 
-	def test_given_data_types(self):
-		with self.assertRaises(TypeError):
-			is_prime('string')
-			is_prime(None)
-			is_prime((1,2))
-			is_prime(1.5)
-			is_prime(True)
-			is_prime(3+5j)
+	def test_contain_method_false(self):
+		test_prime_set = PrimesSet(100)
+		self.assertFalse(6 in test_prime_set)
+		self.assertFalse(10 in test_prime_set)
+		self.assertFalse(0 in test_prime_set)
+		self.assertFalse(91 in test_prime_set)
 
 
 if __name__ == '__main__':
