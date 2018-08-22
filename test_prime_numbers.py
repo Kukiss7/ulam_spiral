@@ -1,6 +1,50 @@
 from prime_numbers import Number, PrimesSet, NumbersGen
 import unittest
 
+class TestNumber(unittest.TestCase):
+	def test_equal_method_compare_non_prime(self):
+		num_0a = Number(0, False)
+		num_0b = Number(0, False)
+		num_6a = Number(6, False)
+		num_6b = Number(6, False)
+
+		self.assertTrue(num_0a==num_0b)
+		self.assertTrue(num_6a==num_6b)
+		self.assertTrue(num_0a!=num_6a)
+		self.assertTrue(num_6b!=num_0b)
+
+		self.assertFalse(num_0a!=num_0b)
+		self.assertFalse(num_6a!=num_6b)
+		self.assertFalse(num_0a==num_6a)
+		self.assertFalse(num_6b==num_0b)
+
+
+	def test_equal_method_compare_primes(self):
+		num_11a = Number(11, True)
+		num_11b = Number(11, True)
+		num_3a = Number(3, True)
+		num_3b = Number(3, True)
+
+		self.assertTrue(num_11a==num_11b)
+		self.assertTrue(num_3a==num_3b)
+		self.assertTrue(num_11a!=num_3a)
+		self.assertTrue(num_3b!=num_11b)
+
+		self.assertFalse(num_11a!=num_11b)
+		self.assertFalse(num_3a!=num_3b)
+		self.assertFalse(num_11a==num_3a)
+		self.assertFalse(num_3b==num_11b)
+
+
+	def test_equal_method_compare_only_is_prime(self):
+		num_11a = Number(11, True)
+		num_11b = Number(11, False)
+
+		self.assertTrue(num_11a!=num_11b)
+		self.assertFalse(num_11a==num_11b)
+
+
+
 class TestPrimesSet(unittest.TestCase):
 	def test_inputs_negative_int(self):
 		test_prime_set = PrimesSet(-100)
@@ -37,6 +81,7 @@ class TestPrimesSet(unittest.TestCase):
 		self.assertFalse(6 in test_prime_set)
 		self.assertFalse(10 in test_prime_set)
 		self.assertFalse(91 in test_prime_set)
+		
 
 
 class TestNumberGen(unittest.TestCase):

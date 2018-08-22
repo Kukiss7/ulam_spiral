@@ -31,7 +31,7 @@ class PrimesSet:
 	def __init__(self, end):
 		self.end = end
 		self.check_for_negative_end()
-		self.primes_set = self.build_primes_set()
+		self.primes_set = set()
 
 
 	def __contains__(self, item):
@@ -56,7 +56,7 @@ class PrimesSet:
 					break
 			else:
 				primes.add(number)
-		return primes	
+		self.primes_set = primes	
 
 
 class NumbersGen:
@@ -70,6 +70,7 @@ class NumbersGen:
 		self.end = end
 		self.start = start
 		self.primes = PrimesSet(end)
+		self.primes.build_primes_set()
 		self.gen = self.numbers_gen()
 
 
