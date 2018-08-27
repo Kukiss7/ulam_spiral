@@ -23,4 +23,5 @@ While project runs, it:
 
 
 Interesting example with start number 41 and size 200:
+
 ![Results exaple](/example/start_41size_200.png)
