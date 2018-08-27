@@ -18,12 +18,9 @@ While project runs, it:
 
  - fills second (main) array while mapping first array and trying to find numbers in primes set
 
- - finally second array with boolean data is visualised with pyplot, where every True/False information 
+ - finally second array with boolean data is visualized with pyplot, where every True/False information 
    corresponds to one pixel in the picture
 
 
 Interesting example with start number 41 and size 200:
-
 ![Results exaple](/example/start_41size_200.png)
-
-Format: ![Alt Text](url)
