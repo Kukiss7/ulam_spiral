@@ -3,7 +3,7 @@ Project's aim was to visualize Ulam spiral (graphical depiction of the set of pr
 Python 3.66 was used here along with numpy and matplotlib libraries
 
 
-Results can be seen with matplotlib.pyplot by launching <b>ulam_spiral_array.py</b> file
+Results can be seen with matplotlib.pyplot by launching **ulam_spiral_array.py** file
 
 
 Short description.
@@ -20,3 +20,10 @@ While project runs, it:
 
  - finally second array with boolean data is visualised with pyplot, where every True/False information 
    corresponds to one pixel in the picture
+
+
+Interesting example with start number 41 and size 200:
+
+![Results exaple](/example/start_41size_200.png)
+
+Format: ![Alt Text](url)
