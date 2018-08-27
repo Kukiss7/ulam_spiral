@@ -1,28 +1,6 @@
 import math
 
 
-class Number:
-	""" Represents the number
-		value: int
-		is_prime: bool
-	"""
-	def __init__(self, value, is_prime):
-		self.value = value
-		self.is_prime = is_prime
-
-
-	def __str__(self):
-		res = ''
-		res = str(self.value)
-		if self.is_prime:
-			res += ' prime'
-		return res
-
-
-	def __eq__(self, other):
-		return self.value == other.value and self.is_prime == other.is_prime
-
-
 class PrimesSet:
 	""" Represents set of prime numbers
 		end: int - max value
@@ -56,39 +34,11 @@ class PrimesSet:
 					break
 			else:
 				primes.add(number)
-		self.primes_set = primes	
-
-
-class NumbersGen:
-	""" Represents set of Number objects
-		end: int
-		start: int
-		primes: PrimesSet object
-		gen: generator with Number objects
-	"""
-	def __init__(self, end, start=0):
-		self.end = end
-		self.start = start
-		self.primes = PrimesSet(end)
-		self.primes.build_primes_set()
-		self.gen = self.numbers_gen()
-
-
-	def __iter__(self):
-		return self.gen
-
-
-	def numbers_gen(self):
-		""" Makes generator of Number objects
-		"""
-		for value in range(self.start, self.end+1):
-			is_prime = value in self.primes
-			number = Number(value, is_prime)
-			yield number
+		self.primes_set = primes
 
 
 
 if __name__ == '__main__':
-	numbers = NumbersGen(15000, start=14960)
-	for number in numbers:
-		print(number)
+	primes = PrimesSet(100)
+	primes.build_primes_set()
+	print(sorted(primes.primes_set))
