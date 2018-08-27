@@ -6,7 +6,6 @@ Python 3.66 was used here along with numpy and matplotlib libraries
 Results can be seen with matplotlib.pyplot by launching **ulam_spiral_array.py** file
 
 
-Short description.
 
 While project runs, it:
 
