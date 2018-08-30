@@ -14,7 +14,7 @@ class SquareArray:
 		odd_size: int; size ensured to be odd
 		halved_size: int; odd_size // 2 very often used in calculations
 	"""
-	def __init__(self, size, dtype, start=0):
+	def __init__(self, size, dtype, start=1):
 		self.size = size
 		self.dtype = dtype
 		self.start = start
@@ -160,7 +160,7 @@ if __name__ == '__main__':
 
 	from matplotlib import pyplot
 
-	start = 0
+	start = 41
 	size = 200
 	ulam_spiral = UlamSpiralArray(size, start)
 	ulam_spiral.fill_integers()
