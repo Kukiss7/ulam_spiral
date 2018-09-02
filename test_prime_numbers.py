@@ -1,4 +1,4 @@
-from prime_numbers import PrimesSet
+from prime_numbers import PrimesSet, PrimesSetIsNotBuiltException
 import unittest
 
 
@@ -28,7 +28,7 @@ class TestPrimesSet(unittest.TestCase):
 		self.assertFalse(test_primes_set2.primes_set)
 
 
-	def test_input_23(self):
+	def test_proper_values_input_23(self):
 		test_primes_set = PrimesSet(23)
 		test_primes_set.build_primes_set()
 
@@ -36,7 +36,7 @@ class TestPrimesSet(unittest.TestCase):
 
 
 	def test_contain_method_true(self):
-		test_primes_set = PrimesSet(100)
+		test_primes_set = PrimesSet(89)
 		test_primes_set.build_primes_set()
 
 		self.assertTrue(3 in test_primes_set)
@@ -53,6 +53,13 @@ class TestPrimesSet(unittest.TestCase):
 		self.assertFalse(6 in test_primes_set)
 		self.assertFalse(10 in test_primes_set)
 		self.assertFalse(91 in test_primes_set)
+
+
+	def test_using_without_building_primes_set(self):
+		test_primes_set = PrimesSet(100)
+
+		with self.assertRaises(PrimesSetIsNotBuiltException):
+			5 in test_primes_set
 
 
 if __name__ == '__main__':

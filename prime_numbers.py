@@ -1,4 +1,8 @@
 
+class PrimesSetIsNotBuiltException(Exception):
+	""" Raised if one tried search for primes in PrimesSet object without filling it first
+	"""
+
 
 class PrimesSet:
 	""" Represents set of prime numbers
@@ -9,10 +13,14 @@ class PrimesSet:
 		self.end = end
 		self.check_for_negative_end()
 		self.primes_set = set()
+		self.is_built = False
 
 
 	def __contains__(self, item):
-		return item in self.primes_set
+		if self.is_built:
+			return item in self.primes_set
+		else:
+			raise PrimesSetIsNotBuiltException('Build the set with a method build_primes_set() first')
 
 
 	def check_for_negative_end(self):
@@ -33,11 +41,12 @@ class PrimesSet:
 					break
 			else:
 				primes.add(number)
-		self.primes_set = primes
 
+		self.is_built = True
+		self.primes_set = primes
 
 
 if __name__ == '__main__':
 	primes = PrimesSet(100)
 	primes.build_primes_set()
-	print(sorted(primes.primes_set))
+	print(f'prime numbers under 100:\n\n{sorted(primes.primes_set)}')
